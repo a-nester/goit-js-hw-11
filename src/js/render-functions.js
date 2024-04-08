@@ -1,14 +1,14 @@
 export function createMarkup(arr) {
   console.log(arr);
   return arr
-    .map(({ previewURL, largeImageURL, likes, views, comments, downloads }) => {
+    .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
       return `
         <li class="gallery-item" >
         <a class="gallery-link" href=${largeImageURL}>
           <img class="gallery-image"
-          src="${previewURL}" 
+          src="${webformatURL}" 
           data-source="${largeImageURL}" 
-          alt="" />
+          alt="${tags}" />
           
         </a>
         <div class="data-box">
