@@ -1,5 +1,4 @@
 export function createMarkup(arr) {
-  console.log(arr);
   return arr
     .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
       return `
