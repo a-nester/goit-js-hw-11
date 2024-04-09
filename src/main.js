@@ -1,11 +1,10 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-
 import { createFetch } from "./js/pixabay-api";
 import { createMarkup } from "./js/render-functions";
+
 const searchForm = document.querySelector(".search-form");
 const galleryList = document.querySelector(".gallery")
 const loader = document.querySelector(".loader")
@@ -48,12 +47,14 @@ function handleClick(event) {
             gallery.refresh();
             
         })
-        .catch(err => console.log(err))
+        .catch(err => iziToast.error({
+                    position: "topRight",
+                    message: "Sorry, there are no images matching your search query. Please try again!",
+                }))
         .finally(() => {
             searchForm.elements[0].value = "";
-            setTimeout(() => loaderToggle(), 1000)
+            loaderToggle();
         })
-   
 }
 
 function loaderToggle() {
